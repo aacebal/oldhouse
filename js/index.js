@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
-  drawMap();
+  drawPorch();
 $(".opendoor").on("click", function(){
   console.log(this);
+  foyerDoor();
   $(".text").removeClass("text").before("<p class='text count'>the door is open</p>");
   $(".houseimg").attr("src", "img/old_house_2.jpg");
   setTimeout(function () {
@@ -19,6 +20,7 @@ $(".goinside").on("click", function(){
   $(".goinside").remove();
   $(".container2").append("<button class='turnonswitch' type='button' name='button'>turn on switch</button>");
   $(".turnonswitch").on("click", function(){
+    drawFoyer();
     oldHouse();
 
 });
@@ -42,7 +44,9 @@ var oldHouse = function oldHouse(){
 
 var rightHallway1 = function rightHallway1(){
 $(".houseimg").attr("src", "img/lobby_right_1.jpg");
+hallwayDoor();
 rightHallway();
+drawHallway();
 };
 
 var rightHallway = function rightHallway(){
@@ -74,6 +78,8 @@ var lookAtPhoto = function lookAtPhoto(){
 
 var openBathroom = function openBathroom() {
   $("button").remove();
+  bathroomDoor();
+  drawBathroom();
   $(".houseimg").attr("src", "img/hallway_2.jpg");
   setTimeout(function () {
     $(".houseimg").attr("src", "img/bathroom_1.jpg");
@@ -100,6 +106,8 @@ var openDrawersBathroom = function openDrawersBathroom(){
 
 var openStorageRoom = function openStorageRoom(){
   $("button").remove();
+  storageDoor();
+  drawStorageRoom();
   $(".houseimg").attr("src", "img/hallway_3.jpg");
   setTimeout(function () {
     $(".houseimg").attr("src", "img/storage_1.jpg");
@@ -135,6 +143,8 @@ var readHeadlines = function readHeadlines(){
 
 var enterLibrary1 = function enterLibrary1(){
   $(".houseimg").attr("src", "img/hallway_4.jpg");
+  libraryDoor();
+  drawLibrary();
   enterLibrary();
 };
 
@@ -208,6 +218,7 @@ var openDrawersLibrary = function openDrawersLibrary(){
 
 var enterKitchen1 = function enterKitchen1(){
   $(".houseimg").attr("src", "img/lobby_left_1.jpg");
+  kitchenDoor();
   enterKitchen();
 };
 
@@ -215,6 +226,7 @@ var enterKitchen = function enterKitchen(){
   $("button").remove();
   setTimeout(function () {
     $(".houseimg").attr("src", "img/kitchen_1.jpg");
+    drawKitchen();
   }, 750);
   $(".housepart").text("KITCHEN");
   $(".text").removeClass("text").before("<p class='text count'>you are in the kitchen</p>");
@@ -264,7 +276,9 @@ var lookInFridge = function lookInFridge(){
 
 var goUpstairs1 = function goUpstairs1(){
   $(".houseimg").attr("src", "img/lobby_upstairs.jpg");
+  stairs();
   goUpstairs();
+  drawUpstairs();
 };
 
 var goUpstairs = function goUpstairs(){
@@ -284,11 +298,13 @@ var goUpstairs = function goUpstairs(){
 
 var enterKidsRoom1 = function enterKidsRoom1(){
   $(".houseimg").attr("src", "img/upstairs_2.jpg");
+  kidsDoor();
   enterKidsRoom();
 };
 
 var enterKidsRoom = function enterKidsRoom(){
   $("button").remove();
+  drawKidsRoom();
   setTimeout(function () {
     $(".houseimg").attr("src", "img/kidsroom_1.jpg");
   }, 1000);
@@ -349,6 +365,7 @@ var enterAdultsRoom = function enterAdultsRoom(){
 
 var openAdultsRoom = function openAdultsRoom(){
   $("button").remove();
+  drawAdultsRoom();
   $(".houseimg").attr("src", "img/adults_room_1.jpg");
   $(".text").removeClass("text").before("<p class='text count'>you are in the parents room</p>");
   $(".container2").append("<button class='opendrawersadultsroom' type='button' name='button'>open drawers</button>");
@@ -432,8 +449,206 @@ var leaveHouse = function leaveHouse(){
   $(".text").removeClass("text").before("<p class='text count'>you got one last look at your old house. Robert Newport, now a new man, living in Aruba with your beloved family</p>");
 };
 
-var drawMap = function drawMap(room){
-  var canvas = $("#canvas");
-  var ctx = canvas[0].getContext("2d");
-  ctx.fillRect(10, 10, 100, 100);
+var canvas = $("#canvas");
+var ctx = canvas[0].getContext("2d");
+
+var drawPorch = function drawPorch(){
+  ctx.beginPath();
+  ctx.moveTo(30,300);
+  ctx.lineTo(150,300);
+  ctx.lineTo(150,260);
+  ctx.lineTo(30, 260);
+  ctx.lineTo(30, 300);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+
+var drawFoyer = function drawFoyer(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(30,260);
+  ctx.lineTo(30, 180);
+  ctx.lineTo(150, 180);
+  ctx.lineTo(150, 260);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var foyerDoor = function foyerDoor(){
+  ctx.strokeStyle = "white";
+  ctx.beginPath();
+  ctx.moveTo(140,260);
+  ctx.lineTo(125,260);
+  ctx.stroke();
+};
+
+var drawKitchen = function drawKitchen(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(30,285);
+  ctx.lineTo(0,285);
+  ctx.lineTo(0,195);
+  ctx.lineTo(30, 195);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var kitchenDoor = function kitchenDoor(){
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(30,250);
+    ctx.lineTo(30,235);
+    ctx.stroke();
+};
+
+var drawHallway = function drawHallway(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(150,220);
+  ctx.lineTo(170,220);
+  ctx.lineTo(170,100);
+  ctx.lineTo(150, 100);
+  ctx.lineTo(150, 190);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var hallwayDoor = function hallwayDoor(){
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(150,210);
+    ctx.lineTo(150,190);
+    ctx.stroke();
+};
+
+var drawBathroom = function drawBathroom(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(170,220);
+  ctx.lineTo(220,220);
+  ctx.lineTo(220,170);
+  ctx.lineTo(170, 170);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var bathroomDoor = function bathroomDoor(){
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(170,210);
+    ctx.lineTo(170,190);
+    ctx.stroke();
+};
+
+var drawStorageRoom = function drawStorageRoom(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(170,170);
+  ctx.lineTo(220,170);
+  ctx.lineTo(220,120);
+  ctx.lineTo(170, 120);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var storageDoor = function storageDoor(){
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(170,160);
+    ctx.lineTo(170,140);
+    ctx.stroke();
+};
+
+var drawLibrary = function Library(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(170,100);
+  ctx.lineTo(220,100);
+  ctx.lineTo(220,50);
+  ctx.lineTo(150,50);
+  ctx.lineTo(150,100);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var libraryDoor = function libraryDoor(){
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(165,100);
+    ctx.lineTo(155,100);
+    ctx.stroke();
+};
+
+var drawUpstairs = function drawUpstairs(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(140,160);
+  ctx.lineTo(150,160);
+  ctx.lineTo(150,0);
+  ctx.lineTo(50,0);
+  ctx.lineTo(50,160);
+  ctx.lineTo(120,160);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var stairs = function stairs(){
+    ctx.strokeStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(120,180);
+    ctx.lineTo(140,180);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.moveTo(120,150);
+    ctx.lineTo(140,150);
+    ctx.stroke();
+    ctx.moveTo(120,170);
+    ctx.lineTo(140,170);
+    ctx.stroke();
+    ctx.moveTo(120,190);
+    ctx.lineTo(140,190);
+    ctx.stroke();
+
+};
+
+var drawKidsRoom = function drawKidsRoom(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(50,90);
+  ctx.lineTo(0,90);
+  ctx.lineTo(0,170);
+  ctx.lineTo(50,170);
+  ctx.lineTo(50,160);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+var kidsDoor = function kidsDoor(){
+  ctx.strokeStyle = "white";
+  ctx.beginPath();
+  ctx.moveTo(50,130);
+  ctx.lineTo(50,150);
+  ctx.stroke();
+};
+
+var drawAdultsRoom = function drawAdultsRoom(){
+  ctx.strokeStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(50,0);
+  ctx.lineTo(0,0);
+  ctx.lineTo(0,90);
+  ctx.lineTo(50,90);
+  ctx.lineWidth = 8;
+  ctx.stroke();
+};
+
+
+var adultsDoor = function adultsDoor(){
+  ctx.strokeStyle = "white";
+  ctx.beginPath();
+  ctx.moveTo(50,50);
+  ctx.lineTo(50,70);
+  ctx.stroke();
 };
