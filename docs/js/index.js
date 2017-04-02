@@ -575,8 +575,8 @@ var drawLibrary = function Library(){
 var libraryDoor = function libraryDoor(){
     ctx.strokeStyle = "white";
     ctx.beginPath();
-    ctx.moveTo(165,100);
-    ctx.lineTo(155,100);
+    ctx.moveTo(166,100);
+    ctx.lineTo(154,100);
     ctx.stroke();
 };
 
